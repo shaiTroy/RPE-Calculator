@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPE Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="navbar">
+        <h1>RPE Calculator</h1>
+
+        <a href="index.html">RPE Calculator</a> 
+        | 
+        <a href="backoffs.html">Backoff Sets</a> 
+        |
+        <a href="about.html">About</a> 
+        | 
+        <a href="contact.html">Contact</a>
+    </div>
+    <hr>
     <form id="getWorkingWeight">
         <label for="prInput">PR:</label>
         <input type="text" id="prInput" name="weight" pattern="[0-9]*">
@@ -14,15 +27,13 @@
         <input type="number" id="repsInput" name="reps" min="1" max="10">
 
         <label for="rpeInput">RPE:</label>
-        <input type="number" id="rpeInput" name="rpe" min="4" max="10">
+        <input type="number" id="rpeInput" name="rpe" min="5" max="10">
         
         <button type="submit">Submit</button>
-    </form>
 
-    <div id="workingWeight">
         <h2>Working Weight:</h2>
         <p id="workingWeightOutput"></p>
-    </div>
+    </form>
 
 
     <script src="script.js"></script>
