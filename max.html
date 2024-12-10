@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPE Calculator</title>
+    <title>Max Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="navbar">
-        <h1>RPE Calculator</h1>
+        <h1>Max Calculator</h1>
 
         <a href="index.html">RPE Calculator</a> 
         | 
@@ -19,48 +19,48 @@
         <a href="About.html">About</a>
     </div>
     <hr>
-    <form id="getWorkingWeight">
-        <label for="prInput">PR:</label>
-        <input type="text" id="prInput" name="weight" pattern="[0-9]*">
+    <form id="getPR">
+        <label for="Weight">Weight:</label>
+        <input type="text" id="Weight" name="weight" pattern="[0-9]*">
 
         <label for="repsInput">Reps:</label>
         <input type="number" id="repsInput" name="reps" min="1" max="10">
 
         <label for="rpeInput">RPE:</label>
         <input type="number" id="rpeInput" name="rpe" min="5" max="10" step="0.5">
-        
         <button type="submit">Submit</button>
 
         <h2>Working Weight:</h2>
-        <p id="workingWeightOutput"></p>
+        <p id="PR_Output"></p>
     </form>
 
 
     <script>
         RPE = [100.0, 97.8, 95.5, 93.9, 92.2, 90.7, 89.2, 87.8, 86.3, 85.0, 83.7, 82.4, 81.1, 79.9, 78.6, 77.4, 76.2, 75.1, 73.9, 72.3, 70.7, 69.4, 68.0, 66.7, 65.3, 64.0, 62.6, 61.3, 59.9]
-
-        function weight(pr, reps, rpe){
+        function getPR(weight, reps, rpe){
             var rir = 10 - rpe;
             console.log('rir is ', rir)
-            var index = (reps - 1)*2 + (2 * rir)
-            console.log('index is ', index)
-            var weight = pr * (RPE[index]/100)
-            console.log(weight)
-            return  Math.round(weight)
+            var index1 = (reps - 1)*2 + (2 * rir)
+            var index2 = (reps - 1)*2 + (2 * 0) + 1
+            console.log('index1 is ', index1)
+            console.log(RPE[index1])
+            console.log('index2 is ', index2)
+            console.log(RPE[index2])
+            var pr = weight * (RPE[index2]/RPE[index1])
+            return  Math.round(pr)
         }
-
-        document.getElementById("getWorkingWeight").onsubmit = function(event) {
+        document.getElementById("getPR").onsubmit = function(event) {
             event.preventDefault(); 
         
-            var prInput = document.getElementById("prInput").value;
+            var weight = document.getElementById("Weight").value;
             var repsInput = document.getElementById("repsInput").value;
             var rpeInput = document.getElementById("rpeInput").value;
         
-            if (prInput === "" || repsInput === "" || rpeInput === "") {
-                document.getElementById("workingWeightOutput").innerHTML = "Please fill out all fields.";
+            if (weight === "" || repsInput === "" || rpeInput === "") {
+                document.getElementById("PR_Output").innerHTML = "Please fill out all fields.";
             } else {
-                var calculatedWeight = weight(prInput, repsInput, rpeInput);
-                document.getElementById("workingWeightOutput").innerHTML = calculatedWeight;
+                var calculatedWeight = getPR(weight, repsInput, rpeInput);
+                document.getElementById("PR_Output").innerHTML = calculatedWeight;
             }
         }
     </script>

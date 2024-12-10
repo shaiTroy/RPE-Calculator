@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backoff Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Backoff Calculator</h1>
+
+        <a href="index.html">RPE Calculator</a> 
+        | 
+        <a href="backoffs.html">Backoff Sets</a> 
+        |
+        <a href="max.html">Max Calculator</a> 
+        | 
+        <a href="About.html">About</a>
+    </div>
+    <hr>
+    <form id="getWorkingWeight">
+        <label for="prInput">PR:</label>
+        <input type="text" id="prInput" name="weight" pattern="[0-9]*">
+
+        <label for="repsInput">Reps:</label>
+        <input type="number" id="repsInput" name="reps" min="1" max="10">
+
+        <label for="rpeInput">RPE:</label>
+        <input type="number" id="rpeInput" name="rpe" min="5" max="10" step="0.5">
+        
+        <button type="submit">Submit</button>
+
+        <h2>Working Weight:</h2>
+        <p id="workingWeightOutput"></p>
+    </form>
+
+
+    <script src="script.js"></script>
+</body>
