@@ -22,7 +22,7 @@
     <form id="getWorkingWeight">
         <button id="btn1" onclick="changeTextAndClass()">Change to Working Weight</button>
         <hr>
-        <label for="prInput">PR:</label>
+        <label id="weightLBL" for="prInput">PR:</label>
         <input class="PR" type="text" id="prInput" name="weight" pattern="[0-9]*">
 
         <label for="repsInput">Reps:</label>
@@ -72,21 +72,20 @@
 
                 function changeTextAndClass() {
                     var prInput = document.getElementById("prInput");
-                    var prValue = prInput.className
                     var btn1 = document.getElementById("btn1");
-                    console.log('changing...')
-                    console.log(prValue)
-
-                    switch (prValue) {
+                    var weightLBL = document.getElementById("weightLBL");
+                    console.log('changing to ', prInput.className);
+        
+                    switch (prInput.className) {
                         case "PR":
-                            prInput.innerHTML = "Working Weight";
+                            weightLBL.innerHTML = "Working Weight";
                             prInput.className = "WW";
-                            btn1.innerHTML = "Change to Working Weight";
+                            btn1.innerHTML = "Change to PR";
                             break;
                         case "WW":
-                            prInput.innerHTML = "PR";
+                            weightLBL.innerHTML = "PR";
                             prInput.className = "PR";
-                            btn1.innerHTML = "Change to PR";
+                            btn1.innerHTML = "Change to Working Weight";
                             break;
                     }
                 }
